@@ -28,12 +28,7 @@ class Database {
         val stmt = conn?.prepareStatement(sql)
         stmt?.setString(1, username)
         stmt?.setString(2, password)
-        // store the result of the query
-        val rs = stmt?.executeQuery()
-        if (rs?.next()!!) {
-            result = true
-        }
-        return rs
+        return stmt?.executeQuery()
     }
 
     fun getUserInfo(username: String): ResultSet? {
@@ -41,9 +36,7 @@ class Database {
         val sql = "SELECT * FROM auth WHERE username = ?"
         val stmt = conn?.prepareStatement(sql)
         stmt?.setString(1, username)
-        // store the result of the query
-        val rs = stmt?.executeQuery()
-        return rs
+        return stmt?.executeQuery()
     }
 }
 

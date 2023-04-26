@@ -5,13 +5,18 @@ import axios                    from 'axios';
 
 function welcome() {
     function authUser() {
+        // store username and password in variables
+        let uName = document.getElementById('uName').value;
+        let pWord = document.getElementById('pWord').value;
         axios.post('http://localhost:3000/api/auth', {
-            username: "test",
-            password: "test"
+            username: uName,
+            password: pWord
         }).then((response) => {
             console.log(response.data);
-            if(response == true) {
-                fetch('http://localhost:3000/api/index'); 
+            if(response === true) {
+                fetch('http://localhost:3000/api/index').then(r => r.json()).then((data) => {
+                    console.log(data);
+                });
             }
         }).catch((error) => {
             console.log(error);
@@ -34,7 +39,8 @@ function welcome() {
                         </div>
 
                         <div className="flex justify-end">
-                            <button onClick={authUser} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <button onClick={authUser}
+                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                 Login
                             </button>
                         </div>

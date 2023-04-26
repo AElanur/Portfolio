@@ -18,6 +18,7 @@ class MainController {
     @PostMapping("/auth")
     fun getInfo(@RequestBody user: dtoUser): ResponseEntity<String> {
         var result = "false"
+        println(user.password)
         if (user.check()) {
             val db = Database()
             val rs = db.auth(user.username!!, user.password!!)
