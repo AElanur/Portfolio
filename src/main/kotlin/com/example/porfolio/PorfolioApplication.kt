@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class PorfolioApplication
 
 fun main(args: Array<String>) {
-	runApplication<PorfolioApplication>(*args)
+    runApplication<PorfolioApplication>(*args)
 }
